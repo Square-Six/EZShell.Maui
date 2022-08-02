@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="EZShellSample.AboutPage"
+    Title="Shell Navigation"
+    Shell.NavBarIsVisible="True"
+    xmlns:vm="clr-namespace:EZShellSample" >
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Spacing="15" >
+            <Label Text="Navigation Options" FontSize="35" Margin="0,20" HorizontalOptions="Center"/>
+            <Button Text="Normal Pop Test" Command="{Binding NormalPopCommand}"/>
+            <Button Text="Tab Switch w/ Param" Command="{Binding TabChangeParamCommand}"/>
+            <Button Text="Push" Command="{Binding PushCommand}"/>
+            <Button Text="Push Modal" Command="{Binding PushModalCommand}"/>
+            <Label Text="{Binding ThirdParameterText}" HorizontalOptions="Center"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
