@@ -1,8 +1,9 @@
 ﻿using System;
+using EZShell;
 
 namespace EZShellSample
 {
-    public partial class PopNavTestView : ContentPage
+    public partial class PopNavTestView : EZShellContentPage
     {
         public PopNavTestView()
         {

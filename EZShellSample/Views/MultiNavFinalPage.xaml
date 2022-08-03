@@ -1,13 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage
+<ez:EZShellContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ez="clr-namespace:EZShell;assembly=EZShell"
     xmlns:vm="clr-namespace:EZShellSample"
+    BindingContextType="{x:Type vm:MultiNavFinalViewModel}"
     x:Class="EZShellSample.MultiNavFinalPage">
-    <ContentPage.BindingContext>
-        <vm:MultiNavFinalViewModel/>
-    </ContentPage.BindingContext>
     <ContentPage.Content>
         <Label Text="{Binding Value}" HorizontalOptions="Center"/>
     </ContentPage.Content>
-</ContentPage>
+</ez:EZShellContentPage>

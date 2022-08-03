@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using ShellNavigation.Models;
 using ShellNavigation.Tools;
 using EZShell;
+using EZShellSample.Interfaces;
 
 namespace EZShellSample
 {
@@ -23,10 +24,11 @@ namespace EZShellSample
         private AsyncCommand _normalPopCommand;
         public AsyncCommand NormalPopCommand => _normalPopCommand ??= new AsyncCommand(GoToPopPageAsync);
 
+        private readonly ISampleInterface _sample;
 
-        public AboutViewModel()
+        public AboutViewModel(ISampleInterface sample)
         {
-            
+            _sample = sample;
         }
 
         public override Task ReverseInitAsync(object parameter)

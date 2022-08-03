@@ -1,12 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage
+<ez:EZShellContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ez="clr-namespace:EZShell;assembly=EZShell"
     xmlns:vm="clr-namespace:EZShellSample"
+    BindingContextType="{x:Type vm:DetailsModalViewModel}"
     x:Class="EZShellSample.DetailsModalPage">
-    <ContentPage.BindingContext>
-        <vm:DetailsModalViewModel/>
-    </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout Spacing="15" Margin="30,100,30,30">
             <Label Text="Details Modal Page!" FontSize="42" HorizontalOptions="Center"/>
@@ -14,4 +13,4 @@
             <Button Text="Close" Command="{Binding CloseCommand}"/>
         </StackLayout>
     </ContentPage.Content>
-</ContentPage>
+</ez:EZShellContentPage>

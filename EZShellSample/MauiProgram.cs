@@ -1,4 +1,8 @@
-﻿namespace EZShellSample;
+﻿using EZShellSample.Interfaces;
+using EZShellSample.Services;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+
+namespace EZShellSample;
 
 public static class MauiProgram
 {
@@ -13,7 +17,16 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
-		return builder.Build();
+        ConfigureServices(builder.Services);
+
+        return builder.Build();
 	}
+
+    public static void ConfigureServices(IServiceCollection services)
+    {
+        services.AddScoped<ISampleInterface, SampleService>();
+
+        services.AddScoped<AboutViewModel>();
+    }
 }
 

@@ -50,8 +50,14 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <None Remove="PropertyChanged.Fody" />
+	  <None Remove="Services\" />
+	  <None Remove="Helpers\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="PropertyChanged.Fody" Version="3.4.1" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Services\" />
+	  <Folder Include="Helpers\" />
 	</ItemGroup>
 </Project>
