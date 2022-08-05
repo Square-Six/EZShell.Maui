@@ -7,9 +7,9 @@ EZShell.Maui allows more complex transfer of data between ViewModels using Xamar
 
 - In your AppShell.cs class, add the following line of code.
 ```
-SquareSixCore.Init();
+EZShellNavigation.Initialize(this);
 ```
-    - Example (ie)
+    Example:
     
     public partial class AppShell : Shell
     {
