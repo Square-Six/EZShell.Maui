@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:vm="clr-namespace:EZShellSample"
     xmlns:ez="clr-namespace:EZShell;assembly=EZShell"
-    BindingContextType="{x:Type vm:ThirdDeepViewModel}"
+    ViewModelType="{x:Type vm:ThirdDeepViewModel}"
     x:Class="EZShellSample.ThirdDeepPage">
     <ContentPage.Content>
         <StackLayout>

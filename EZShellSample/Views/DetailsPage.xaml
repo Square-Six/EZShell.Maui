@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:vm="clr-namespace:EZShellSample"
     xmlns:ez="clr-namespace:EZShell;assembly=EZShell"
-    BindingContextType="{x:Type vm:DetailsViewModel}"
+    ViewModelType="{x:Type vm:DetailsViewModel}"
     Shell.NavBarIsVisible="True"
     Title="Details"
     x:Class="EZShellSample.DetailsPage">

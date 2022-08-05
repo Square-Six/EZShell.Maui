@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ez="clr-namespace:EZShell;assembly=EZShell"
     xmlns:vm="clr-namespace:EZShellSample"
-    BindingContextType="{x:Type vm:PopNavTestViewModel}"
+    ViewModelType="{x:Type vm:PopNavTestViewModel}"
     x:Class="EZShellSample.PopNavTestView">
     <ContentPage.Content>
         <StackLayout>

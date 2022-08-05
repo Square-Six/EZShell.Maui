@@ -9,6 +9,18 @@
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
 
+		<PackageId>EZShell.Maui</PackageId>
+		<Authors>Jamie Smith</Authors>
+		<Copyright>SquareSix 2022</Copyright>
+		<NeutralLanguage>en</NeutralLanguage>
+		<Owners>SquareSix</Owners>
+		<PackageReleaseNotes>Intitial Release (Version 1)</PackageReleaseNotes>
+		<Summary>EZShell.Maui allows more complex transfer of data between ViewModels in Xamarin Shell Navigation as well as Dependency Injection.</Summary>
+		<PackageTags>Xamarin.Shell,xamarin shell, Shell Navigation, shell navigation, EZShell, ezshell, EasyShell, easyshell, xamarin.forms, xamarin forms, DI, di, dependency injection, DependencyInjection</PackageTags>
+		<Title>EZShell.Maui</Title>
+		<Description>EZShell.Maui allows more complex transfer of data between ViewModels in Xamarin Shell Navigation as well as Dependency Injection.</Description>
+		<PackageVersion>1.0.0</PackageVersion>
+
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
