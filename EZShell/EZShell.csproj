@@ -14,6 +14,7 @@
 		<Copyright>SquareSix 2022</Copyright>
 		<NeutralLanguage>en</NeutralLanguage>
 		<Owners>SquareSix</Owners>
+		<PackageLicenseUrl>https://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
 		<PackageReleaseNotes>Intitial Release (Version 1)</PackageReleaseNotes>
 		<Summary>EZShell.Maui allows more complex transfer of data between ViewModels in Xamarin Shell Navigation as well as Dependency Injection.</Summary>
 		<PackageTags>Xamarin.Shell,xamarin shell, Shell Navigation, shell navigation, EZShell, ezshell, EasyShell, easyshell, xamarin.forms, xamarin forms, DI, di, dependency injection, DependencyInjection</PackageTags>
