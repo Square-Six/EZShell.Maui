@@ -6,31 +6,31 @@ namespace EZShell;
 
 public class EZShellContentPage : ContentPage
 {
-    public Type BindingContextType
+    public Type ViewModelType
     {
-        get => (Type)GetValue(BindingContextTypeProperty);
-        set => SetValue(BindingContextTypeProperty, value);
+        get => (Type)GetValue(ViewModelTypeProperty);
+        set => SetValue(ViewModelTypeProperty, value);
     }
 
-    public static readonly BindableProperty BindingContextTypeProperty = BindableProperty.Create(
-                                                    propertyName: nameof(BindingContextType),
+    public static readonly BindableProperty ViewModelTypeProperty = BindableProperty.Create(
+                                                    propertyName: nameof(ViewModelType),
                                                     returnType: typeof(Type),
                                                     declaringType: typeof(EZShellContentPage),
                                                     defaultBindingMode: BindingMode.TwoWay,
-                                                    propertyChanged: OnBindingContextTypePropertyChanged);
+                                                    propertyChanged: OnViewModelTypePropertyChanged);
 
     public EZShellContentPage()
 	{
         
     }
 
-    private static void OnBindingContextTypePropertyChanged(BindableObject bindable, object oldValue, object newValue)
+    private static void OnViewModelTypePropertyChanged(BindableObject bindable, object oldValue, object newValue)
     {
         if (bindable is EZShellContentPage control)
         {
             if (newValue is Type type)
             {
-                control.BindingContextType = type;
+                control.ViewModelType = type;
 
                 // Set the pages binding context
                 var context = IOCHelper.GetService(type);
