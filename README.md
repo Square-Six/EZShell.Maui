@@ -10,11 +10,11 @@ EZShellNavigation.Initialize(this);
 ```
 public partial class AppShell : Shell
 {
-	public AppShell()
-	{
-		InitializeComponent();
-		EZShellNavigation.Initialize(this);
-	}
+    public AppShell()
+    {
+    	InitializeComponent();
+	EZShellNavigation.Initialize(this);
+    }
 }
 ```
 
@@ -24,7 +24,7 @@ public partial class AppShell : Shell
 	- Set the `ViewModelType` property in the xaml. This will be your Pages' ViewModel or BindingContext. In this case its `SampleViewModel`. With setting this property, the `EZShellContentPage` will try to create and set the BindingContext based on the Type provided.
 ```
 <ez:EZShellContentPage 
-	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ez="clr-namespace:EZShell;assembly=EZShell"
     ViewModelType="{x:Type vm:SampleViewModel}"
@@ -45,7 +45,7 @@ using EZShell;
 
 public class SampleViewModel : EZShellViewModel
 {
-	public SampleViewModel()
+    public SampleViewModel()
     { }
     
     public override Task InitializeAsync(object parameter)
