@@ -42,27 +42,25 @@ public partial class AppShell : Shell
 ```
 <ez:EZShellContentPage
 
-xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 
-xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 
-xmlns:ez="clr-namespace:EZShell;assembly=EZShell"
+    xmlns:ez="clr-namespace:EZShell;assembly=EZShell"
 
-ViewModelType="{x:Type vm:SampleViewModel}"
+    ViewModelType="{x:Type vm:SampleViewModel}"
 
-xmlns:vm="clr-namespace:EZShellSample.ViewModels"
+    xmlns:vm="clr-namespace:EZShellSample.ViewModels"
 
-x:Class="EZShellSample.Views.SamplePage"
+    x:Class="EZShellSample.Views.SamplePage"
 
-x:DataType="vm:SampleViewModel"
+    x:DataType="vm:SampleViewModel"
 
-Title="SamplePage">
+    Title="SamplePage">
 
-<VerticalStackLayout>
+    <VerticalStackLayout>
 
-  
-
-</VerticalStackLayout>
+    </VerticalStackLayout>
 
 </ez:EZShellContentPage>
 
