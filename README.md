@@ -50,12 +50,12 @@ public class SampleViewModel : EZShellViewModel
     
     public override Task InitializeAsync(object parameter)
     {
-	    return base.InitializeAsync(parameter);
+    	return base.InitializeAsync(parameter);
     }
 
     public override Task ReverseInitAsync(object parameter)
     {
-	    return base.ReverseInitAsync(parameter);
+	return base.ReverseInitAsync(parameter);
     }
 }
 ```
