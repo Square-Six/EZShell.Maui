@@ -5,7 +5,7 @@ VisualStudioVersion = 25.0.1703.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EZShell", "EZShell\EZShell.csproj", "{759054F3-8569-4EFD-B619-777705C93D43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EZShellSample", "EZShellSample\EZShellSample.csproj", "{979A7553-3FCA-4115-8555-6F63DDEFB5F4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Sample\Sample.csproj", "{5CF9C4A9-383B-49C4-8FFC-E9EF1A2D4144}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{759054F3-8569-4EFD-B619-777705C93D43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{759054F3-8569-4EFD-B619-777705C93D43}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{759054F3-8569-4EFD-B619-777705C93D43}.Release|Any CPU.Build.0 = Release|Any CPU
-		{979A7553-3FCA-4115-8555-6F63DDEFB5F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{979A7553-3FCA-4115-8555-6F63DDEFB5F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{979A7553-3FCA-4115-8555-6F63DDEFB5F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{979A7553-3FCA-4115-8555-6F63DDEFB5F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CF9C4A9-383B-49C4-8FFC-E9EF1A2D4144}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CF9C4A9-383B-49C4-8FFC-E9EF1A2D4144}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CF9C4A9-383B-49C4-8FFC-E9EF1A2D4144}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CF9C4A9-383B-49C4-8FFC-E9EF1A2D4144}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

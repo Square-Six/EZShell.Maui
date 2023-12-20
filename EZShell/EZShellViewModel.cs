@@ -1,37 +1,32 @@
-﻿using System;
-using System.Data.Common;
-using System.Threading.Tasks;
+﻿namespace EZShell;
 
-namespace EZShell
+public class EzShellViewModel : IEzShellViewModel
 {
-    public class EZShellViewModel : IEZShellViewModel
+    public object Parameter { get; set; }
+    public object ReversParameter { get; set; }
+
+    public virtual Task InitializeAsync()
     {
-        public object Parameter { get; set; }
-        public object ReversParameter { get; set; }
+        return Task.CompletedTask;
+    }
 
-        public virtual Task InitializeAsync()
-        {
-            return Task.CompletedTask;
-        }
+    public virtual Task InitializeAsync(object parameter)
+    {
+        return Task.CompletedTask;
+    }
 
-        public virtual Task InitializeAsync(object parameter)
-        {
-            return Task.CompletedTask;
-        }
+    public virtual Task ReverseInitAsync(object parameter)
+    {
+        return Task.CompletedTask;
+    }
 
-        public virtual Task ReverseInitAsync(object parameter)
-        {
-            return Task.CompletedTask;
-        }
+    public virtual void SetParameter(object parameter)
+    {
+        Parameter = parameter;
+    }
 
-        public virtual void SetParameter(object parameter)
-        {
-            Parameter = parameter;
-        }
-
-        public virtual void SetReverseParameter(object parameter)
-        {
-            ReversParameter = parameter;
-        }
+    public virtual void SetReverseParameter(object parameter)
+    {
+        ReversParameter = parameter;
     }
 }

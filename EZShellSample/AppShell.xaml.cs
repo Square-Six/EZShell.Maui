@@ -8,7 +8,7 @@ public partial class AppShell : Shell
 	{
 		InitializeComponent();
 
-        EZShellNavigation.Initialize(this);
+        EzShellNavigation.Initialize(this);
 
         Routing.RegisterRoute(nameof(DetailsPage), typeof(DetailsPage));
         Routing.RegisterRoute(nameof(DetailsModalPage), typeof(DetailsModalPage));

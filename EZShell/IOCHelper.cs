@@ -1,6 +1,6 @@
 ﻿namespace EZShell;
 
-public class IOCHelper
+public abstract class IocHelper
 {
     public static object GetService(Type type) => AppServices.GetService(type);
 

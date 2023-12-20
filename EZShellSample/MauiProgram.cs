@@ -1,6 +1,5 @@
 ﻿using EZShellSample.Interfaces;
 using EZShellSample.Services;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace EZShellSample;
 
@@ -25,8 +24,6 @@ public static class MauiProgram
     public static void ConfigureServices(IServiceCollection services)
     {
         services.AddScoped<ISampleInterface, SampleService>();
-
         services.AddScoped<AboutViewModel>();
     }
 }
-
