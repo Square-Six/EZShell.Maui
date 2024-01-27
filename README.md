@@ -1,76 +1,36 @@
 
 # EZShell.Maui
 
-EZShell.Maui allows more complex transfer of data between ViewModels using Xamarin Shell Navigation as well as Dependency Injection.
-
-  
+EZShell.Maui enhances the data transfer experience between ViewModels in Maui applications by leveraging Shell Navigation's powerful capabilities combined with robust Dependency Injection. This integration not only simplifies complex data exchanges but also streamlines the development process, providing a more efficient and seamless navigation framework for developers.
 
 ## Setup
 
-- In your AppShell.cs class, add the following line of code.
+### AppShell.cs
+In the constructor of your **AppShell.cs** class, insert the following line of code after the **InitializeComponent()** method:
 
 ```
-
-EZShellNavigation.Initialize(this);
-
-```
-
-- Example:
-
-```
-
 public partial class AppShell : Shell
 {
     public AppShell()
     {
-	InitializeComponent();
-	EZShellNavigation.Initialize(this);
+        InitializeComponent();
+        EzShellNavigation.Initialize(this);
     }
 }
 
 ```
 
-  
+## MauiProgram.cs
+To enable dependency injection, add the following line of code in your **MauiProgram.cs** class after registering all of your app's services and interfaces:
+
+```
+builder.UseEzShell();
+```
+
 ## Usage
 
-- ContentPage
-
-	- Your ContentPage needs to subclass `EZShellContentPage`.
-
-	- Set the `ViewModelType` property in the xaml. This will be your Pages' ViewModel or BindingContext. In this case its `SampleViewModel`. With setting this property, the `EZShellContentPage` will try to create and set the BindingContext based on the Type provided.
-
-```
-<ez:EZShellContentPage
-
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-
-    xmlns:ez="clr-namespace:EZShell;assembly=EZShell"
-
-    ViewModelType="{x:Type vm:SampleViewModel}"
-
-    xmlns:vm="clr-namespace:EZShellSample.ViewModels"
-
-    x:Class="EZShellSample.Views.SamplePage"
-
-    x:DataType="vm:SampleViewModel"
-
-    Title="SamplePage">
-
-    <VerticalStackLayout>
-
-    </VerticalStackLayout>
-
-</ez:EZShellContentPage>
-
-```
-
-- ViewModel
-
-	- Your ViewModel needs to subclass `EZShellViewModel`
-
-	- When using EZShell, there will now be a few methods that you can override to listen for objects being passed between the ViewModels. See the following example:
+### ViewModels
+Ensure your viewmodels inherit from the 'EzShellViewModel' class to enable them to listen for navigation events and handle parameter passing:
 
 ```
 using EZShell;
@@ -82,86 +42,42 @@ public class SampleViewModel : EZShellViewModel
 	
     public override Task InitializeAsync(object parameter)
     {
-	return base.InitializeAsync(parameter);
+        return base.InitializeAsync(parameter);
     }
 	
     public override Task ReverseInitAsync(object parameter)
     {
-	return base.ReverseInitAsync(parameter);
+        return base.ReverseInitAsync(parameter);
     }
 }
 ```
 
-- Custom ViewModel
-	- You can also create your own class that subclasses `EZShellViewModel` by implementing the `IEZShellViewModel` interface.
-```
-public class BaseViewModel : IEZShellViewModel
-{
-    public object Parameter { get; set; }
-    public object ReversParameter { get; set; }
-	
-    public BaseViewModel()
-    { }
-	
-    public virtual Task InitializeAsync()
-    {
-	return Task.CompletedTask;
-    }
+## ContentPage
 
-    public virtual Task InitializeAsync(object parameter)
-    {
-	return Task.CompletedTask;
-    }
-	
-    public virtual Task ReverseInitAsync(object parameter)
-    {
-	return Task.CompletedTask;
-    }
-
-    public virtual void SetParameter(object parameter)
-    {
-        Parameter = parameter;
-    }
-
-    public virtual void SetReverseParameter(object parameter)
-    {
-	ReversParameter = parameter;
-    }
-}
-```
-
-- Dependency Injection
-
-	- For now, `EZShell` is assuming that you are using the built in .netMaui way of registering your Services on app startup.
-
-	- If you add your ViewModels to your `ServiceCollection`, the EZShell will be able to resolve those dependencies and inject them into your ViewModels. (See sample below)
+In your ContentPage .xaml file, specify the ViewModelType and set up listeners for OnAppearing and OnDisappearing events:
 
 ```
-var builder = MauiApp.CreateBuilder().UseMauiApp<App>());
-builder.Services.AddScoped<SampleViewModel>();
-```
-
-```
-public SampleViewModel(ISampleInterface sampleService)
-{ }
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Sample.ViewModels"
+             xmlns:ez="clr-namespace:EzShell.Maui;assembly=EzShell.Maui"
+             ez:EzShellPageExtensions.OnAppearingCommand="{Binding OnAppearingCommand}"
+             ez:EzShellPageExtensions.OnDisappearingCommand="{Binding OnDisAppearingCommand}"
+             ez:EzShellPageExtensions.ViewModelType="{x:Type vm:MainViewModel}"
+             x:Class="Sample.ContentPages.MainPage">
+<!-- Page Content -->
+</ContentPage>
 ```
 
 ## Navigation
 
-- Navigate with `EZShell` using the extension methods based off of the default Shell Navigation.
+Utilize EzShell's methods to navigate within your application:
 
 ```
-var someData = new { Value = "Some Text" };
-Shell.Current.GoToAsync(nameof(SamplePage), someData);
-```
-
-- Here are some samples of using the available extension methods.
-
-```
-Shell.Current.GoToAsync(nameof(SamplePage), someData);
-Shell.Current.PushModalWithNavigation(new SamplePage(), someData);
-Shell.Current.PushMultiStackAsync(new List<ShellNavigationState>{ nameof(SamplePage) }, someData);
-Shell.Current.PopAsync();
+Shell.Current.GoToAsync(nameof(DetailsPage), someData);
+Shell.Current.PopAsync(someData);
 Shell.Current.PopToRootAsync(someData);
-Shell.Current.ChangeTabAsync(1, someData, popToRootFirst: true);
+Shell.Current.ChangeTabAsync(1, someData);
+Shell.Current.PushMultiStackAsync(myListOfPages, someData);
+Shell.Current.PushModalAsync(myContentPage, someData);
 ```
