@@ -1,43 +1,15 @@
-﻿using System;
-using System.Threading.Tasks;
-using ShellNavigation.Models;
-using EZShell;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using EzShell.Maui;
 
-namespace EZShellSample
+namespace Sample.ViewModels;
+
+public class BaseViewModel : EzShellViewModel, INotifyPropertyChanged
 {
-    public class BaseViewModel : BasePropertyChangedModel, IEzShellViewModel
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
     {
-        public object Parameter { get; set; }
-        public object ReversParameter { get; set; }
-
-        public BaseViewModel()
-        {
-        }
-
-        public virtual Task InitializeAsync()
-        {
-            return Task.CompletedTask;
-        }
-
-        public virtual Task InitializeAsync(object parameter)
-        {
-            return Task.CompletedTask;
-        }
-
-        public virtual Task ReverseInitAsync(object parameter)
-        {
-            return Task.CompletedTask;
-        }
-
-        public virtual void SetParameter(object parameter)
-        {
-            Parameter = parameter;
-        }
-
-        public virtual void SetReverseParameter(object parameter)
-        {
-            ReversParameter = parameter;
-        }
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }
-

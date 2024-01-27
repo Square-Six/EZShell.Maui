@@ -1,5 +1,5 @@
-﻿using EZShell;
-using EZShellSample;
+﻿using EzShell.Maui;
+using Sample.ContentPages;
 
 namespace Sample;
 
@@ -8,13 +8,12 @@ public partial class AppShell
     public AppShell()
     {
         InitializeComponent();
-        
-        EzShellNavigation.Initialize(this);
 
+        // Initialize EzShell
+        EzShellNavigation.Initialize(this);
+        
+        // Register routes
         Routing.RegisterRoute(nameof(DetailsPage), typeof(DetailsPage));
-        Routing.RegisterRoute(nameof(DetailsModalPage), typeof(DetailsModalPage));
-        Routing.RegisterRoute(nameof(ThirdDeepPage), typeof(ThirdDeepPage));
-        Routing.RegisterRoute(nameof(PopNavTestView), typeof(PopNavTestView));
-        Routing.RegisterRoute(nameof(MultiNavFinalPage), typeof(MultiNavFinalPage));
+        Routing.RegisterRoute(nameof(ThirdPage), typeof(ThirdPage));
     }
 }

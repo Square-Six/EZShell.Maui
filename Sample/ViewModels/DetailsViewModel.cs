@@ -1,35 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using ShellNavigation.Tools;
-using EZShell;
+using System.Windows.Input;
+using EzShell.Maui;
 
-namespace EZShellSample
+namespace Sample.ViewModels;
+
+public class DetailsViewModel : BaseViewModel
 {
-    public class DetailsViewModel : BaseViewModel
+    public ICommand PopCommand { get; set; }
+    public ICommand PopParamCommand { get; set; }
+    
+    private string _text;
+    public string ParameterText
     {
-        public string Value { get; set; }
-
-        private AsyncCommand _pushCommand;
-        public AsyncCommand PushCommand => _pushCommand ??= new AsyncCommand(OnPushNavigation);
-
-        public DetailsViewModel()
+        get => _text;
+        set
         {
+            _text = value;
+            OnPropertyChanged();
         }
+    }
 
-        public override Task InitializeAsync(object parameter)
+    public DetailsViewModel()
+    {
+        PopCommand = new Command(PopView);
+        PopParamCommand = new Command(PopViewWithParameters);
+    }   
+    
+    public override Task DataReceivedAsync(object parameter)
+    {
+        if (parameter is string value)
+            ParameterText = value;
+        else
         {
-            if (parameter is List<string> list)
-            {
-                Value = string.Join(", ", list);
-            }
-
-            return base.InitializeAsync(parameter);
+            ParameterText = "Default Push";
         }
-
-        private Task OnPushNavigation()
-        {
-            return Shell.Current.GoToAsync(nameof(ThirdDeepPage));
-        }
+        
+        return Task.CompletedTask; 
+    }
+    
+    private void PopView()
+    {
+        Shell.Current.PopAsync();
+    }
+    
+    private void PopViewWithParameters()
+    {
+        Shell.Current.PopAsync("View popped with Parameters");
     }
 }

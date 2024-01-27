@@ -1,7 +1,6 @@
-﻿using EZShellSample;
-using EZShellSample.Interfaces;
-using EZShellSample.Services;
+﻿using EzShell.Maui;
 using Microsoft.Extensions.Logging;
+using Sample.Interfaces;
 
 namespace Sample;
 
@@ -22,14 +21,10 @@ public static class MauiProgram
         builder.Logging.AddDebug();
 #endif
         
-        ConfigureServices(builder.Services);
+        builder.Services.AddTransient<ISampleService, SampleService>();
+
+        builder.UseEzShell();
 
         return builder.Build();
-    }
-    
-    public static void ConfigureServices(IServiceCollection services)
-    {
-        services.AddScoped<ISampleInterface, SampleService>();
-        services.AddScoped<AboutViewModel>();
     }
 }

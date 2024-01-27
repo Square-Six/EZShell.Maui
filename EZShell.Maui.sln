@@ -1,11 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 25.0.1703.0
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EZShell", "EZShell\EZShell.csproj", "{759054F3-8569-4EFD-B619-777705C93D43}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EzShell.Maui", "EzShell.Maui\EzShell.Maui.csproj", "{A9CCAFDF-4B8E-4E5D-88D7-F87E11D0A1E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Sample\Sample.csproj", "{5CF9C4A9-383B-49C4-8FFC-E9EF1A2D4144}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Sample\Sample.csproj", "{51ECEB04-E21A-4D56-9972-8947C2F14179}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,19 +10,13 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{759054F3-8569-4EFD-B619-777705C93D43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{759054F3-8569-4EFD-B619-777705C93D43}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{759054F3-8569-4EFD-B619-777705C93D43}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{759054F3-8569-4EFD-B619-777705C93D43}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5CF9C4A9-383B-49C4-8FFC-E9EF1A2D4144}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5CF9C4A9-383B-49C4-8FFC-E9EF1A2D4144}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5CF9C4A9-383B-49C4-8FFC-E9EF1A2D4144}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5CF9C4A9-383B-49C4-8FFC-E9EF1A2D4144}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {724C80C7-C98D-4769-90F9-794D0AB42946}
+		{A9CCAFDF-4B8E-4E5D-88D7-F87E11D0A1E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9CCAFDF-4B8E-4E5D-88D7-F87E11D0A1E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9CCAFDF-4B8E-4E5D-88D7-F87E11D0A1E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9CCAFDF-4B8E-4E5D-88D7-F87E11D0A1E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51ECEB04-E21A-4D56-9972-8947C2F14179}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51ECEB04-E21A-4D56-9972-8947C2F14179}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51ECEB04-E21A-4D56-9972-8947C2F14179}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51ECEB04-E21A-4D56-9972-8947C2F14179}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

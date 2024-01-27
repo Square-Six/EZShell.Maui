@@ -1,18 +1,14 @@
-﻿using System;
-using EZShellSample.Interfaces;
+namespace Sample.Interfaces;
 
-namespace EZShellSample.Services
+public interface ISampleService
 {
-    public class SampleService : ISampleInterface
-    {
-        public SampleService()
-        {
-        }
-
-        public void DoSomething()
-        {
-            // Nope...Actually do nothing here :P
-        }
-    }
+    string Test();
 }
 
+public class SampleService : ISampleService
+{
+    public string Test()
+    {
+        return "Value from Dependency Injection";
+    }
+}
