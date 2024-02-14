@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EzShell.Maui", "EzShell.Maui\EzShell.Maui.csproj", "{A9CCAFDF-4B8E-4E5D-88D7-F87E11D0A1E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Sample\Sample.csproj", "{51ECEB04-E21A-4D56-9972-8947C2F14179}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EzShellSample", "EzShellSample\EzShellSample.csproj", "{D0D6C618-6797-46D6-8FB5-CF3510C43369}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,9 +14,9 @@ Global
 		{A9CCAFDF-4B8E-4E5D-88D7-F87E11D0A1E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9CCAFDF-4B8E-4E5D-88D7-F87E11D0A1E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9CCAFDF-4B8E-4E5D-88D7-F87E11D0A1E0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{51ECEB04-E21A-4D56-9972-8947C2F14179}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{51ECEB04-E21A-4D56-9972-8947C2F14179}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{51ECEB04-E21A-4D56-9972-8947C2F14179}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{51ECEB04-E21A-4D56-9972-8947C2F14179}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0D6C618-6797-46D6-8FB5-CF3510C43369}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0D6C618-6797-46D6-8FB5-CF3510C43369}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0D6C618-6797-46D6-8FB5-CF3510C43369}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0D6C618-6797-46D6-8FB5-CF3510C43369}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

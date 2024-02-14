@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ez="clr-namespace:EzShell.Maui;assembly=EzShell.Maui"
+             xmlns:vm="clr-namespace:Sample.ViewModels"
+             x:DataType="vm:DetailsViewModel"
+             ez:EzShellPageExtensions.ViewModelType="{x:Type vm:DetailsViewModel}"
+             Title="Details"
+             x:Class="Sample.ContentPages.DetailsPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <VerticalStackLayout
+                Margin="20,20"
+                Spacing="10">
+                <Label 
+                    Margin="30"
+                    FontSize="42"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Text="{Binding ParameterText}"/>
+                <Button
+                    Text="Pop Page" 
+                    Command="{Binding PopCommand}"/>
+                <Button
+                    Text="Pop with Parameters" 
+                    Command="{Binding PopParamCommand}"/>
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

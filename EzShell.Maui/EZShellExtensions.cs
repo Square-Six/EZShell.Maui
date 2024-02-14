@@ -2,9 +2,9 @@
 
 public static class EzShellExtensions
 {
-    public static void GoToAsync(this Shell shell,  ShellNavigationState state, object parameter, bool animate = true)
+    public static Task PushAsync(this Shell shell,  ShellNavigationState state, object? parameter = null, bool animate = true)
     {
-        EzShellNavigation.Instance.GoToAsync(state, parameter, animate);
+        return EzShellNavigation.Instance.PushAsync(state, parameter, animate);
     }
     
     public static Task PopAsync(this Shell shell, object? parameter = null, bool animate = true)
