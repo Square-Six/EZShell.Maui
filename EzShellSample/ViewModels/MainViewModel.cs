@@ -36,7 +36,7 @@ public class MainViewModel : BaseViewModel
 
         DiText = sampleService.Test();
     }
-    
+
     protected override void OnAppearing()
     {
         Console.WriteLine("OnAppearing");

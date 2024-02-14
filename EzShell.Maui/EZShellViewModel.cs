@@ -1,8 +1,9 @@
 ﻿using System.Windows.Input;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace EzShell.Maui;
 
-public class EzShellViewModel : IEzShellViewModel
+public partial class EzShellViewModel : ObservableObject,  IEzShellViewModel
 {
     public ICommand OnAppearingCommand { get; }
     public ICommand OnDisAppearingCommand { get; }
