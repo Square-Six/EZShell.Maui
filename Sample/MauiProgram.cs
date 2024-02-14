@@ -1,4 +1,5 @@
 ﻿using EzShell.Maui;
+using Microsoft.Extensions.Logging;
 using Sample.Interfaces;
 
 namespace Sample;
@@ -17,13 +18,13 @@ public static class MauiProgram
             });
 
 #if DEBUG
-        builder.Logging.AddDebug();
+		builder.Logging.AddDebug();
 #endif
-        
+
         builder.Services.AddTransient<ISampleService, SampleService>();
 
         builder.UseEzShell();
-
+        
         return builder.Build();
     }
 }
