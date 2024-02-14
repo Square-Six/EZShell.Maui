@@ -30,6 +30,7 @@
         <Title>EZShell.Maui</Title>
         <PackageProjectUrl>https://github.com/Square-Six/EZShell.Maui</PackageProjectUrl>
         <PackageLicenseUrl>https://github.com/Square-Six/EZShell.Maui/blob/main/LICENSE</PackageLicenseUrl>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
     <ItemGroup>
