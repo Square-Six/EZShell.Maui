@@ -17,7 +17,7 @@
         <TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 
-        <PackageVersion>2.0.0</PackageVersion>
+        <PackageVersion>2.0.2</PackageVersion>
         <PackageId>EZShell.Maui</PackageId>
         <Authors>Jamie Smith</Authors>
         <Copyright>SquareSix 2024</Copyright>
@@ -30,7 +30,12 @@
         <Title>EZShell.Maui</Title>
         <PackageProjectUrl>https://github.com/Square-Six/EZShell.Maui</PackageProjectUrl>
         <PackageLicenseUrl>https://github.com/Square-Six/EZShell.Maui/blob/main/LICENSE</PackageLicenseUrl>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    </ItemGroup>
     
     
 </Project>

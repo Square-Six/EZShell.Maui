@@ -2,28 +2,32 @@
 
 public class EzShellNavigation
 {
-    private static Shell? CustomShell { get; set; }
-
     public static EzShellNavigation Instance { get; } = new();
 
     private object? _navigationParameter;
 
     private bool _isReverseNavigation;
+
+    private Shell? _shell;
     
-    public static void Initialize(Shell shell)
+    private void ShellSetup(Shell shell)
     {
-        CustomShell = shell ?? throw new NullReferenceException(EzShellConstants.NullShellRefExceptionText);
-        CustomShell.Navigated += CustomShellNavigated!;
+        if (shell == null)
+            throw new NullReferenceException(EzShellConstants.ShellNotFoundText);
+
+        shell.Navigated += OnShellNavigated!;
+        _shell = shell;
     }
 
-    private static void CustomShellNavigated(object sender, ShellNavigatedEventArgs e)
+    private void ShellTeardown(Shell shell)
     {
-        Instance.OnShellNavigated();
+        shell.Navigated -= OnShellNavigated!;
+        _shell = null;
     }
 
-    private void OnShellNavigated()
+    private void OnShellNavigated(object sender, ShellNavigatedEventArgs e)
     {
-        if ((CustomShell?.CurrentItem?.CurrentItem as IShellSectionController)?.PresentedPage is ContentPage 
+        if ((_shell?.CurrentItem?.CurrentItem as IShellSectionController)?.PresentedPage is ContentPage 
             { 
                 BindingContext: IEzShellViewModel viewModel
             })
@@ -37,63 +41,64 @@ public class EzShellNavigation
         _navigationParameter = null;
         _isReverseNavigation = false;
     }
-
-    public async Task ChangeTabAsync(int tabIndex, object? tParameter, bool popToRootFirst)
+    
+    public async Task PushAsync<TParameter>(Shell shell, ShellNavigationState state, TParameter? tParameter, bool animate = true)
     {
-        if (CustomShell == null)
-            throw new NullReferenceException(EzShellConstants.NullShellRefExceptionText);
+        ShellSetup(shell);
+        
+        _navigationParameter = tParameter;
+        await Shell.Current.GoToAsync(state, animate);
+        
+        ShellTeardown(shell);
+    }
+
+    public async Task ChangeTabAsync<TParameter>(Shell shell, int tabIndex, TParameter? tParameter, bool popToRootFirst)
+    {
+        ShellSetup(shell);
         
         if (popToRootFirst)
-            await CustomShell.Navigation.PopToRootAsync(false);
+            await Shell.Current.Navigation.PopToRootAsync(false);
         
         _navigationParameter = tParameter;
 
-        if (CustomShell.Items[0]?.Items?.Count < tabIndex)
-        {
+        if (Shell.Current.Items[0]?.Items?.Count < tabIndex)
             return;
-        }
 
-        var shellSections = CustomShell?.Items[0]?.Items;
+        var shellSections = Shell.Current.Items[0]?.Items;
         if (shellSections != null)
         {
             var itemTo = shellSections[tabIndex];
-            CustomShell!.CurrentItem = itemTo;
+            Shell.Current.CurrentItem = itemTo;
         }
+        
+        ShellTeardown(shell);
     }
 
-    public Task GoToAsync<TParameter>(ShellNavigationState state, TParameter tParameter, bool animate = true)
+    public async Task PopAsync<TResult>(Shell shell, TResult tResult, bool animate = true)
     {
-        if (CustomShell == null)
-            throw new NullReferenceException(EzShellConstants.NullShellRefExceptionText);
-
-        _navigationParameter = tParameter;
-        return CustomShell.GoToAsync(state, animate);
-    }
-
-    public Task PopAsync<TResult>(TResult tResult, bool animate = true)
-    {
-        if (CustomShell == null)
-            throw new NullReferenceException(EzShellConstants.NullShellRefExceptionText);
+        ShellSetup(shell);
         
         _isReverseNavigation = true;
         _navigationParameter = tResult;
-        return CustomShell.GoToAsync("..", animate);
+        await Shell.Current.GoToAsync("..", animate);
+        
+        ShellTeardown(shell);
     }
 
-    public Task PopToRootAsync<TResult>(TResult tResult, bool animate = true)
+    public async Task PopToRootAsync<TResult>(Shell shell, TResult tResult, bool animate = true)
     {
-        if (CustomShell == null)
-            throw new NullReferenceException(EzShellConstants.NullShellRefExceptionText);
+        ShellSetup(shell);
         
         _isReverseNavigation = true;
         _navigationParameter = tResult;
-        return CustomShell.Navigation.PopToRootAsync(animate);
+        await Shell.Current.Navigation.PopToRootAsync(animate);
+        
+        ShellTeardown(shell);
     }
 
-    public async Task PushMultiStackAsync<TParameter>(List<ShellNavigationState> states, TParameter tParameter, bool animate, bool animateAllPages)
+    public async Task PushMultiStackAsync<TParameter>(Shell shell, List<ShellNavigationState> states, TParameter tParameter, bool animate, bool animateAllPages)
     {
-        if (CustomShell == null)
-            throw new NullReferenceException(EzShellConstants.NullShellRefExceptionText);
+        ShellSetup(shell);
         
         if (states == null || states.Count == 0)
             throw new NullReferenceException(EzShellConstants.NavigationStatesExceptionText);
@@ -104,28 +109,31 @@ public class EzShellNavigation
             if (state == lastState)
             {
                 _navigationParameter = tParameter;
-                await CustomShell.GoToAsync(state, animate);
+                await Shell.Current.GoToAsync(state, animate);
             }
             else
             {
-                await CustomShell.GoToAsync(state, animateAllPages);
+                await Shell.Current.GoToAsync(state, animateAllPages);
             }
         }
+        
+        ShellTeardown(shell);
     }
 
-    public async Task PushModalWithNavigation<TParameter>(ContentPage page, TParameter? tParameter, bool animate = true)
+    public async Task PushModalWithNavigation<TParameter>(Shell shell, ContentPage page, TParameter? tParameter, bool animate = true)
     {
-        if (CustomShell == null)
-            throw new NullReferenceException(EzShellConstants.NullShellRefExceptionText);
+        ShellSetup(shell);
         
         if (page == null)
             throw new NullReferenceException(EzShellConstants.NullContentPageExceptionText); 
         
-        await CustomShell.Navigation.PushModalAsync(new NavigationPage(page), animate);
+        await Shell.Current.Navigation.PushModalAsync(new NavigationPage(page), animate);
         if (page.BindingContext is IEzShellViewModel vm)
         {
             if (tParameter != null)
                 _= vm.DataReceivedAsync(tParameter);
         }
+        
+        ShellTeardown(shell);
     }
 }

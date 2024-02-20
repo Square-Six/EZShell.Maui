@@ -66,17 +66,4 @@
       <ProjectReference Include="..\EzShell.Maui\EzShell.Maui.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <MauiXaml Update="ContentPages\MainPage.xaml">
-        <SubType>Designer</SubType>
-      </MauiXaml>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Compile Update="ContentPages\MainPage.xaml.cs">
-        <DependentUpon>MainPage.xaml</DependentUpon>
-        <SubType>Code</SubType>
-      </Compile>
-    </ItemGroup>
-
 </Project>

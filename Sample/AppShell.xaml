@@ -3,23 +3,25 @@
     x:Class="Sample.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Sample.ContentPages"
+    xmlns:local="clr-namespace:Sample"
+    xmlns:contentPages="clr-namespace:Sample.ContentPages"
+    Shell.FlyoutBehavior="Disabled"
     Title="Sample">
 
     <TabBar>
         <Tab Title="Main">
             <ShellContent
                 Title="Home"
-                ContentTemplate="{DataTemplate local:MainPage}"
+                ContentTemplate="{DataTemplate contentPages:MainPage}"
                 Route="MainPage" />
         </Tab>
         <Tab Title="Tab 2">
             <ShellContent
                 Title="Tab 2"
-                ContentTemplate="{DataTemplate local:TabPageTwo}"
+                ContentTemplate="{DataTemplate contentPages:TabPageTwo}"
                 Route="TabTwo" />
         </Tab>
         
     </TabBar>
-    
+
 </Shell>
