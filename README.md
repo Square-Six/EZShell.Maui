@@ -5,21 +5,6 @@ EZShell.Maui enhances the data transfer experience between ViewModels in Maui ap
 
 ## Setup
 
-### AppShell.cs
-In the constructor of your **AppShell.cs** class, insert the following line of code after the **InitializeComponent()** method:
-
-```
-public partial class AppShell : Shell
-{
-    public AppShell()
-    {
-        InitializeComponent();
-        EzShellNavigation.Initialize(this);
-    }
-}
-
-```
-
 ## MauiProgram.cs
 To enable dependency injection, add the following line of code in your **MauiProgram.cs** class after registering all of your app's services and interfaces:
 
