@@ -10,13 +10,27 @@ public partial class EzShellViewModel : ObservableObject,  IEzShellViewModel
 
     protected EzShellViewModel()
     {
-        OnAppearingCommand = new Command(OnAppearing);
-        OnDisAppearingCommand = new Command(OnDisAppearing);
+        OnAppearingCommand = new Command(ViewAppearing);
+        OnDisAppearingCommand = new Command(ViewDisappearing);
     }
-    
-    protected virtual void OnAppearing() { }
 
-    protected virtual void OnDisAppearing() { }
+    private void ViewAppearing()
+    {
+        Task.Run(async () => {
+            await OnAppearing();
+        });
+    }
+
+    private void ViewDisappearing()
+    {
+        Task.Run(async () => {
+            await OnDisAppearing();
+        });
+    }
+
+    public virtual Task OnAppearing() => Task.CompletedTask;
+    
+    public virtual Task OnDisAppearing() => Task.CompletedTask;
     
     public virtual Task DataReceivedAsync(object? parameter) => Task.CompletedTask;
 
