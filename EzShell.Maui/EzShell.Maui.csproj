@@ -17,13 +17,13 @@
         <TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 
-        <PackageVersion>2.0.3</PackageVersion>
+        <PackageVersion>2.0.2</PackageVersion>
         <PackageId>EZShell.Maui</PackageId>
         <Authors>Jamie Smith</Authors>
         <Copyright>SquareSix 2024</Copyright>
         <NeutralLanguage>en</NeutralLanguage>
         <Owners>SquareSix</Owners>
-        <PackageReleaseNotes>Optimizations and making ViewAppearing and ViewDissappearing async methods</PackageReleaseNotes>
+        <PackageReleaseNotes>Simplified usage and optimized the code for latest version of Maui)</PackageReleaseNotes>
         <Summary>EZShell.Maui allows more complex transfer of data between ViewModels in Xamarin Shell Navigation as well as Dependency Injection.</Summary>
         <Description>EZShell.Maui allows more complex transfer of data between ViewModels in Xamarin Shell Navigation as well as Dependency Injection.</Description>
         <PackageTags>Maui, .netMaui, .netmaui, Shell Navigation, shell navigation, EZShell, ezshell, EasyShell, easyshell, DI, di, dependency injection, DependencyInjection</PackageTags>

@@ -37,16 +37,9 @@ public class MainViewModel : BaseViewModel
         DiText = sampleService.Test();
     }
 
-    public override Task OnAppearing()
+    protected override void OnAppearing()
     {
         Console.WriteLine("OnAppearing");
-        return Task.CompletedTask;
-    }
-
-    public override Task OnDisAppearing()
-    {
-        Console.WriteLine("ViewDisappearingAsync");
-        return Task.CompletedTask;
     }
 
     public override Task ReverseDataReceivedAsync(object? parameter)
