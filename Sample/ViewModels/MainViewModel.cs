@@ -1,11 +1,12 @@
 using System.Windows.Input;
+using CommunityToolkit.Mvvm.Input;
 using Sample.ContentPages;
 using EzShell.Maui;
 using Sample.Interfaces;
 
 namespace Sample.ViewModels;
 
-public class MainViewModel : BaseViewModel
+public class MainViewModel : EzShellViewModel
 {
     public ICommand DetailsCommand { get; set; }
     public ICommand DefaultCommand { get; set; }
