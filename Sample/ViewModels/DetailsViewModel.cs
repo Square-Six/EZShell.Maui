@@ -23,8 +23,13 @@ public class DetailsViewModel : BaseViewModel
     {
         PopCommand = new Command(PopView);
         PopParamCommand = new Command(PopViewWithParameters);
-    }   
-    
+    }
+
+    protected override void OnAppearing()
+    {
+        Console.WriteLine("OnAppearing");
+    }
+
     public override Task DataReceivedAsync(object parameter)
     {
         if (parameter is string value)

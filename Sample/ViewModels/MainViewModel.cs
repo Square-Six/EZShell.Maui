@@ -37,6 +37,12 @@ public class MainViewModel : EzShellViewModel
         DiText = sampleService.Test();
     }
 
+    public override Task Initialized()
+    {
+        Console.WriteLine("Initialized");
+        return base.Initialized();
+    }
+
     protected override void OnAppearing()
     {
         Console.WriteLine("OnAppearing");

@@ -70,15 +70,18 @@ public class EzShellNavigation
     /// <param name="e">The event arguments.</param>
     private void OnShellNavigated(object sender, ShellNavigatedEventArgs e)
     {
-        if ((_shell?.CurrentItem?.CurrentItem as IShellSectionController)?.PresentedPage is ContentPage 
-            { 
-                BindingContext: IEzShellViewModel viewModel
-            })
+        if ((_shell?.CurrentItem?.CurrentItem as IShellSectionController)?.PresentedPage is ContentPage { BindingContext: IEzShellViewModel viewModel })
         {
+            viewModel.Initialized();
+            
             if (_isReverseNavigation)
+            {
                 viewModel.ReverseDataReceivedAsync(_navigationParameter!);
+            }
             else
+            {
                 viewModel.DataReceivedAsync(_navigationParameter!);
+            }
         }
 
         _navigationParameter = null;

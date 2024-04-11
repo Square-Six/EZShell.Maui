@@ -125,7 +125,7 @@ public static class EzShellPageExtensions
     /// </summary>
     /// <param name="sender">The object triggering the event.</param>
     /// <param name="e">The event arguments.</param>
-    private static void OnPageAppearing(object sender, EventArgs e)
+    private static void OnPageAppearing(object? sender, EventArgs e)
     {
         if (sender is not BindableObject bindable) 
             return;
@@ -188,7 +188,7 @@ public static class EzShellPageExtensions
     /// </remarks>
     /// <param name="sender">The object that triggered the event.</param>
     /// <param name="e">The event arguments.</param>
-    private static void OnPageDisappearing(object sender, EventArgs e)
+    private static void OnPageDisappearing(object? sender, EventArgs e)
     {
         if (sender is not BindableObject bindable) 
             return;
