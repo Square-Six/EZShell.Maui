@@ -17,17 +17,18 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
 
-        <PackageVersion>2.0.3</PackageVersion>
+        <PackageVersion>2.0.4</PackageVersion>
         <PackageId>EZShell.Maui</PackageId>
         <Authors>Jamie Smith</Authors>
         <Copyright>SquareSix 2024</Copyright>
         <NeutralLanguage>en</NeutralLanguage>
         <Owners>SquareSix</Owners>
-        <PackageReleaseNotes>Fixed issue with compiling on windows machines. Added bunch of code documentaion</PackageReleaseNotes>
+        <PackageReleaseNotes>Added Initialized method to EzShellViewmodel to trigger when Viewmodels load. Code leanup and performannce improvements</PackageReleaseNotes>
         <Summary>EZShell.Maui allows more complex transfer of data between ViewModels in Xamarin Shell Navigation as well as Dependency Injection.</Summary>
         <Description>EZShell.Maui allows more complex transfer of data between ViewModels in Xamarin Shell Navigation as well as Dependency Injection.</Description>
         <PackageTags>Maui, Xamarin, .NET MAUI, .netmaui, navigation, complex navigation, Shell Navigation, ViewModel, C#, cross-platform, multi-platform, universal app development, mobile development, iOS, Android, UWP, MVVM, app architecture, software architecture, framework, Xamarin.Forms, data passing, data transfer, software development, coding, programming, developer tools, EZShell, EasyShell, DI, dependency injection</PackageTags>
         <Title>EZShell.Maui</Title>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/Square-Six/EZShell.Maui</PackageProjectUrl>
         <PackageLicenseUrl>https://github.com/Square-Six/EZShell.Maui/blob/main/LICENSE</PackageLicenseUrl>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
