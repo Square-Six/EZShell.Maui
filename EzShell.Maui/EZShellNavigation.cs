@@ -54,21 +54,34 @@ public class EzShellNavigation
     }
 
     /// <summary>
+    /// Registers a route for a page type.
+    /// </summary>
+    /// <param name="pageType">The type of the page to register the route for.</param>
+    private void RegisterRoute(Type pageType)
+    {
+        Routing.UnRegisterRoute(pageType.Name);
+        Routing.RegisterRoute(pageType.Name, pageType);
+    }
+
+    /// <summary>
     /// Event handler for the Shell.Navigated event.
     /// </summary>
     /// <param name="sender">The object that raised the event.</param>
     /// <param name="e">The event arguments.</param>
     private void OnShellNavigated(object sender, ShellNavigatedEventArgs e)
     {
-        if ((_shell?.CurrentItem?.CurrentItem as IShellSectionController)?.PresentedPage is ContentPage 
-            { 
-                BindingContext: IEzShellViewModel viewModel
-            })
+        if ((_shell?.CurrentItem?.CurrentItem as IShellSectionController)?.PresentedPage is ContentPage { BindingContext: IEzShellViewModel viewModel })
         {
+            viewModel.Initialized();
+            
             if (_isReverseNavigation)
+            {
                 viewModel.ReverseDataReceivedAsync(_navigationParameter!);
+            }
             else
+            {
                 viewModel.DataReceivedAsync(_navigationParameter!);
+            }
         }
 
         _navigationParameter = null;
@@ -87,13 +100,29 @@ public class EzShellNavigation
     public async Task PushAsync<TParameter>(Shell shell, ShellNavigationState state, TParameter? tParameter, bool animate = true)
     {
         ShellSetup(shell);
-
         _navigationParameter = tParameter;
         await Shell.Current.GoToAsync(state, animate);
-        
         ShellTeardown(shell);
     }
 
+    /// <summary>
+    /// Pushes a page onto the navigation stack asynchronously.
+    /// </summary>
+    /// <typeparam name="TParameter">The type of the parameter for the page.</typeparam>
+    /// <param name="shell">The Shell instance to navigate on.</param>
+    /// <param name="pageType">The type of the page to push.</param>
+    /// <param name="tParameter">The parameter for the page.</param>
+    /// <param name="animate">True to animate the transition, false otherwise. Default is true.</param>
+    /// <returns>A Task representing the ongoing asynchronous operation.</returns>
+    public async Task PushAsync<TParameter>(Shell shell, Type pageType, TParameter? tParameter, bool animate = true)
+    {
+        RegisterRoute(pageType);
+        ShellSetup(shell);
+        _navigationParameter = tParameter;
+        await Shell.Current.GoToAsync(new ShellNavigationState(pageType.Name), animate);
+        ShellTeardown(shell);
+    }
+    
     /// <summary>
     /// Changes the currently selected tab in a Shell-based Maui application.
     /// </summary>
@@ -192,6 +221,42 @@ public class EzShellNavigation
             else
             {
                 await Shell.Current.GoToAsync(state, animateAllPages);
+            }
+        }
+        
+        ShellTeardown(shell);
+    }
+
+    /// <summary>
+    /// Pushes multiple pages onto the Shell navigation stack asynchronously.
+    /// </summary>
+    /// <typeparam name="TParameter">The type of the parameter to pass to the pages.</typeparam>
+    /// <param name="shell">The Shell instance.</param>
+    /// <param name="pageTypes">The list of page types to navigate to.</param>
+    /// <param name="tParameter">The parameter to pass to the pages.</param>
+    /// <param name="animate">A boolean value indicating whether to animate the navigation.</param>
+    /// <param name="animateAllPages">A boolean value indicating whether to animate all pages during the navigation.</param>
+    /// <returns>A task representing the asynchronous operation.</returns>
+    /// <exception cref="NullReferenceException">Thrown when the pageTypes parameter is null or empty.</exception>
+    public async Task PushMultiStackAsync<TParameter>(Shell shell, List<Type> pageTypes, TParameter tParameter, bool animate, bool animateAllPages)
+    {
+        ShellSetup(shell);
+
+        if (pageTypes == null || pageTypes.Count == 0)
+            throw new NullReferenceException(EzShellConstants.NavigationStatesExceptionText);
+
+        var lastState = pageTypes.Last();
+        foreach (var type in pageTypes)
+        {
+            RegisterRoute(type);
+            if (type == lastState)
+            {
+                _navigationParameter = tParameter;
+                await Shell.Current.GoToAsync(new ShellNavigationState(type.Name), animate);
+            }
+            else
+            {
+                await Shell.Current.GoToAsync(new ShellNavigationState(type.Name), animateAllPages);
             }
         }
         

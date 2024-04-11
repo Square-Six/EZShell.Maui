@@ -1,5 +1,4 @@
 using System.Windows.Input;
-using CommunityToolkit.Mvvm.Input;
 using Sample.ContentPages;
 using EzShell.Maui;
 using Sample.Interfaces;
@@ -38,6 +37,12 @@ public class MainViewModel : EzShellViewModel
         DiText = sampleService.Test();
     }
 
+    public override Task Initialized()
+    {
+        Console.WriteLine("Initialized");
+        return base.Initialized();
+    }
+
     protected override void OnAppearing()
     {
         Console.WriteLine("OnAppearing");
@@ -60,12 +65,11 @@ public class MainViewModel : EzShellViewModel
 
     private void PushMultiViews()
     {
-        var pages = new List<ShellNavigationState>
+        var pages = new List<Type>
         {
-            nameof(DetailsPage),
-            nameof(ThirdPage)
+            typeof(DetailsPage),
+            typeof(ThirdPage)
         };
-        // Shell.Current.PushMultiStackAsync(pages);
         Shell.Current.PushMultiStackAsync(pages, "With Data");
     }
 
@@ -76,7 +80,7 @@ public class MainViewModel : EzShellViewModel
 
     private void OnDetails()
     {
-        Shell.Current.PushAsync(nameof(DetailsPage), "Data sent from Main Page!");
+        Shell.Current.PushAsync(typeof(DetailsPage), "Data sent from Main Page!");
     }
 
     private void ChangeTab()
