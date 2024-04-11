@@ -30,7 +30,6 @@
         <Title>EZShell.Maui</Title>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/Square-Six/EZShell.Maui</PackageProjectUrl>
-        <PackageLicenseUrl>https://github.com/Square-Six/EZShell.Maui/blob/main/LICENSE</PackageLicenseUrl>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
