@@ -30,15 +30,14 @@ public partial class EzShellViewModel : ObservableObject,  IEzShellViewModel
     }
 
     /// <summary>
-    /// Executes when the view associated with the view model is appearing on the screen.
+    /// Gets called when Navigation happens and the EZShell ViewModel has Initialized.
     /// </summary>
-    protected virtual void OnAppearing() { }
-
-    /// <summary>
-    /// Executes when the view associated with the view model is disappearing from the screen.
-    /// </summary>
-    protected virtual void OnDisAppearing() { }
-
+    /// <returns>A task representing the initialization process.</returns>
+    public virtual Task Initialized()
+    {
+        return Task.CompletedTask;
+    }
+    
     /// <summary>
     /// Sends data to the view model asynchronously.
     /// </summary>
@@ -52,4 +51,15 @@ public partial class EzShellViewModel : ObservableObject,  IEzShellViewModel
     /// <param name="parameter">The parameter of type object that contains the data to be reversed.</param>
     /// <returns>A Task representing the asynchronous operation.</returns>
     public virtual Task ReverseDataReceivedAsync(object? parameter) => Task.CompletedTask;
+    
+    /// <summary>
+    /// Executes when the view associated with the view model is appearing on the screen.
+    /// </summary>
+    protected virtual void OnAppearing() { }
+
+    /// <summary>
+    /// Executes when the view associated with the view model is disappearing from the screen.
+    /// </summary>
+    protected virtual void OnDisAppearing() { }
+
 }

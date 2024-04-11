@@ -1,6 +1,5 @@
 ﻿using EzShell.Maui;
 using Microsoft.Extensions.Logging;
-using Sample.Interfaces;
 
 namespace Sample;
 
@@ -11,6 +10,8 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
+            .ConfigureServices()
+            .UseEzShell()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -20,10 +21,8 @@ public static class MauiProgram
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
-
-        builder.Services.AddTransient<ISampleService, SampleService>();
-
-        builder.UseEzShell();
+        
+        // builder.UseEzShell();
         
         return builder.Build();
     }

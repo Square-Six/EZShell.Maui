@@ -6,6 +6,12 @@
 public interface IEzShellViewModel
 {
     /// <summary>
+    /// Initializes the EZShell ViewModel.
+    /// </summary>
+    /// <returns>A task representing the initialization process.</returns>
+    Task Initialized();
+
+    /// <summary>
     /// Sends data to the view model asynchronously.
     /// </summary>
     /// <param name="parameter">The data parameter to be sent to the view model.</param>
