@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
+        <TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst;net8.0-windows10.0.19041.0</TargetFrameworks>
         <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
         <!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
         <!-- <TargetFrameworks>$(TargetFrameworks);net8.0-tizen</TargetFrameworks>-->
@@ -17,13 +17,13 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
 
-        <PackageVersion>2.0.4</PackageVersion>
+        <PackageVersion>2.0.5</PackageVersion>
         <PackageId>EZShell.Maui</PackageId>
         <Authors>Jamie Smith</Authors>
         <Copyright>SquareSix 2024</Copyright>
         <NeutralLanguage>en</NeutralLanguage>
         <Owners>SquareSix</Owners>
-        <PackageReleaseNotes>Added Initialized method to EzShellViewmodel to trigger when Viewmodels load. Code leanup and performannce improvements</PackageReleaseNotes>
+        <PackageReleaseNotes>Fixed issues with not being able to compile when on Windows</PackageReleaseNotes>
         <Summary>EZShell.Maui allows more complex transfer of data between ViewModels in Xamarin Shell Navigation as well as Dependency Injection.</Summary>
         <Description>EZShell.Maui allows more complex transfer of data between ViewModels in Xamarin Shell Navigation as well as Dependency Injection.</Description>
         <PackageTags>Maui, Xamarin, .NET MAUI, .netmaui, navigation, complex navigation, Shell Navigation, ViewModel, C#, cross-platform, multi-platform, universal app development, mobile development, iOS, Android, UWP, MVVM, app architecture, software architecture, framework, Xamarin.Forms, data passing, data transfer, software development, coding, programming, developer tools, EZShell, EasyShell, DI, dependency injection</PackageTags>
